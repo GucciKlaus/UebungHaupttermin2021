@@ -120,7 +120,7 @@ namespace MVVM_Lib
                     {
                         helper = "linkes";
                     }
-                TomoEventArgs args = new TomoEventArgs { Eye = value.RightEye, Namer = $"{value.Firstname} sein {helper} {value.Lastname}", papillaray = values, ImageData = value.Image };
+                TomoEventArgs args = new TomoEventArgs { Eye = value.RightEye, Namer = $"{value.Firstname} sein {helper} Auge", papillaray = values, ImageData = value.Image };
                 OnTomographieChanged(args);
             }
         }
