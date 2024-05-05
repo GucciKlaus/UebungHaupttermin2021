@@ -111,7 +111,16 @@ namespace MVVM_Lib
                 {
                     values[i] = value.Average * i / 5;
                 }
-                TomoEventArgs args = new TomoEventArgs { Eye = value.RightEye, Namer = $"{value.Firstname} sein {value.Lastname}", papillaray = values, ImageData = value.Image };
+                    string helper = "";
+                if(value.RightEye == true)
+                    {
+                        helper = "rechtes";
+                    }
+                    else
+                    {
+                        helper = "linkes";
+                    }
+                TomoEventArgs args = new TomoEventArgs { Eye = value.RightEye, Namer = $"{value.Firstname} sein {helper} {value.Lastname}", papillaray = values, ImageData = value.Image };
                 OnTomographieChanged(args);
             }
         }
