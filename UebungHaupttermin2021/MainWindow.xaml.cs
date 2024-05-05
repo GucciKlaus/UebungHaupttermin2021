@@ -34,8 +34,17 @@ namespace UebungHaupttermin2021
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            EventHandler += (usc1 as MyInterface).ValueChangedFromOutside;
-            EventHandler2 += (usc2 as MyInterface).ValueChangedFromOutside;
+            //EventHandler += (usc1 as MyInterface).ValueChangedFromOutside;
+            //EventHandler2 += (usc2 as MyInterface).ValueChangedFromOutside;
+
+            
+            foreach(UIElement elem in maingrid.Children)
+            {
+                if(elem is MyInterface)
+                {
+                    EventHandler += (elem as MyInterface).ValueChangedFromOutside;
+                }
+            }
 
             var DB = new DataContext();
             DB.Database.EnsureDeleted();
@@ -46,7 +55,7 @@ namespace UebungHaupttermin2021
             
 
            
-            this.DataContext = new MyViewModel().Init(DB,EventHandler,EventHandler2);
+            this.DataContext = new MyViewModel().Init(DB,EventHandler);
         }
 
         private void MyViewModel_TomographieChanged(object? sender, TomoEventArgs e)

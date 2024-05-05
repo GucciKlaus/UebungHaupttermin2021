@@ -29,17 +29,16 @@ namespace MVVM_Lib
     public class MyViewModel : ObservableObject
     {
         public event EventHandler<TomoEventArgs> TomographieChanged;
-        public event EventHandler<TomoEventArgs> TomographieChanged2;
         private DataContext _context;
         
-        public MyViewModel Init(DataContext dataContext, EventHandler<TomoEventArgs>eventpeppi,EventHandler<TomoEventArgs>eventpeppi2)
+        public MyViewModel Init(DataContext dataContext, EventHandler<TomoEventArgs>eventpeppi)
         {
             _context = dataContext;
             Doctors = _context.Doctors.OrderBy(x => x.DoctorLastName).ToList();
             SelectedDoctor = Doctors.First();
             patients = _context.Patients.Where(x => x.DoctorDoctorID == SelectedDoctor.DoctorID).ToList();
             this.TomographieChanged = eventpeppi;
-            this.TomographieChanged2 = eventpeppi2;
+
             return this;
         }
 
@@ -121,15 +120,7 @@ namespace MVVM_Lib
 
         private void OnTomographieChanged(TomoEventArgs args)
         {
-            if(args.Eye == true)
-            {
-                TomographieChanged?.Invoke(this, args);
-            }
-            else if (args.Eye== false)
-            {
-                TomographieChanged2?.Invoke(this, args);
-            }
-            
+                TomographieChanged?.Invoke(this, args);          
         }
 
 

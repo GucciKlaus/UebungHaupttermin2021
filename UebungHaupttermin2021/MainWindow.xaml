@@ -12,7 +12,7 @@
     <Window.DataContext>
         <MVVM:MyViewModel></MVVM:MyViewModel>
     </Window.DataContext>
-    <Grid>
+    <Grid Name="maingrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -35,7 +35,7 @@
                 <DataGridTextColumn Binding="{Binding MinValue}" Header="Minimum" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <UserControl:UserControl1 Grid.Row="3" Margin="5" Name="usc1"></UserControl:UserControl1>
-        <UserControl:UserControl1 Grid.Column="1" Grid.Row="3" Margin="5" Name="usc2"></UserControl:UserControl1>
+        <UserControl:UserControl1 Grid.Row="3" Margin="5" Name="usc1" Eye="False"></UserControl:UserControl1>
+        <UserControl:UserControl1 Grid.Column="1" Grid.Row="3" Margin="5" Name="usc2" Eye="True"></UserControl:UserControl1>
     </Grid>
 </Window>

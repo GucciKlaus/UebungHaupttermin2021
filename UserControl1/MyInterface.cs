@@ -10,9 +10,5 @@ namespace UserControl1
     public interface MyInterface
     {
         void ValueChangedFromOutside(object? sender, TomoEventArgs e);
-
-
-
-
     }
 }
