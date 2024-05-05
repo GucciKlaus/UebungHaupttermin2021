@@ -1,0 +1,41 @@
+﻿<Window x:Class="UebungHaupttermin2021.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UebungHaupttermin2021"
+        xmlns:UserControl ="clr-namespace:UserControl1;assembly=UserControl1"
+        xmlns:MVVM="clr-namespace:MVVM_Lib;assembly=MVVM_Lib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <MVVM:MyViewModel></MVVM:MyViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ComboBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}" ></ComboBox>
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}">
+        </ListBox>
+        <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectionChanged="DataGrid_SelectionChanged" SelectedItem="{Binding SelectedTomography}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Firstname}" Header="Vorname"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Lastname}" Header="Zuname"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Datum"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Binding="{Binding RightEye}" Header="Rechtes Auge"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Average}" Header="Durchschnitt"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding MinValue}" Header="Minimum" ></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <UserControl:UserControl1 Grid.Row="3" Margin="5" Name="usc1"></UserControl:UserControl1>
+        <UserControl:UserControl1 Grid.Column="1" Grid.Row="3" Margin="5" Name="usc2"></UserControl:UserControl1>
+    </Grid>
+</Window>
